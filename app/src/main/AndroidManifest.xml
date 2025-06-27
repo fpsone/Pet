@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Pet"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name="com.petcare.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Pet">

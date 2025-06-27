@@ -7,19 +7,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.petcare.presentation.ui.common.AuroraBackground
 import com.petcare.presentation.ui.common.BottomNavigationBar
 
 @Composable
-fun MainScreen(navController: NavHostController, onThemeChange: (Boolean) -> Unit) {
+fun MainScreen(rootNavController: NavHostController, onThemeChange: (Boolean) -> Unit) {
+    val mainNavController = rememberNavController()
     Box {
         AuroraBackground()
         Scaffold(
-            bottomBar = { BottomNavigationBar(navController = navController) },
+            bottomBar = { BottomNavigationBar(navController = mainNavController) },
             containerColor = Color.Transparent,
             content = {
                 Box(modifier = Modifier.padding(it)) {
-                    AppNavigation(navController = navController, onThemeChange = onThemeChange)
+                    AppNavigation(
+                        rootNavController = rootNavController,
+                        mainNavController = mainNavController,
+                        onThemeChange = onThemeChange
+                    )
                 }
             }
         )

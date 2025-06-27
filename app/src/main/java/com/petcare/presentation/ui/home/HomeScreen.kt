@@ -11,7 +11,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Chat
+import androidx.compose.material.icons.automirrored.filled.Chat
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -68,7 +68,7 @@ fun HomeScreen(
                     shape = CircleShape,
                     modifier = Modifier.glassmorphism(shape = CircleShape)
                 ) {
-                    Icon(imageVector = Icons.Filled.Chat, contentDescription = "Chat with Pet Pal AI")
+                    Icon(imageVector = Icons.AutoMirrored.Filled.Chat, contentDescription = "Chat with Pet Pal AI")
                 }
             }
         ) { paddingValues ->

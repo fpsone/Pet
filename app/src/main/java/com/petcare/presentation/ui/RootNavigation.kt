@@ -8,10 +8,10 @@ import com.petcare.presentation.ui.chat.ChatScreen
 
 @Composable
 fun RootNavigation(onThemeChange: (Boolean) -> Unit) {
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "main") {
+    val rootNavController = rememberNavController()
+    NavHost(navController = rootNavController, startDestination = "main") {
         composable("main") {
-            MainScreen(navController = navController, onThemeChange = onThemeChange)
+            MainScreen(rootNavController = rootNavController, onThemeChange = onThemeChange)
         }
         composable("chat") {
             ChatScreen()

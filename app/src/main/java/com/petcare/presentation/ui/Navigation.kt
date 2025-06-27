@@ -10,10 +10,14 @@ import com.petcare.presentation.ui.settings.SettingsScreen
 import com.petcare.presentation.ui.walk.WalkScreen
 
 @Composable
-fun AppNavigation(navController: NavHostController, onThemeChange: (Boolean) -> Unit) {
-    NavHost(navController = navController, startDestination = "home") {
+fun AppNavigation(
+    rootNavController: NavHostController,
+    mainNavController: NavHostController,
+    onThemeChange: (Boolean) -> Unit
+) {
+    NavHost(navController = mainNavController, startDestination = "home") {
         composable("home") {
-            HomeScreen(navController = navController)
+            HomeScreen(navController = rootNavController)
         }
         composable("health") {
             HealthScreen()

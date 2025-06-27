@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.petcare.presentation.ui.common.glassmorphism
 
@@ -36,16 +37,18 @@ fun HealthVitalsWidget(batteryPercentage: Int) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Rounded.BatteryChargingFull,
-                    contentDescription = "Battery"
+                    contentDescription = "Battery",
+                    tint = Color.White
                 )
                 Text(
                     text = "$batteryPercentage%",
-                    style = MaterialTheme.typography.bodyLarge
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = Color.White
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(text = "Heart Rate Chart Placeholder")
+                Text(text = "Heart Rate Chart Placeholder", color = Color.White)
             }
         }
     }

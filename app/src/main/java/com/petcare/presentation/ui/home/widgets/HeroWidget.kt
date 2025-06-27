@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.petcare.domain.model.Pet
 import com.petcare.presentation.ui.common.glassmorphism
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun HeroWidget(pet: Pet?) {
@@ -31,11 +32,13 @@ fun HeroWidget(pet: Pet?) {
         ) {
             Text(
                 text = pet?.name ?: "Loading...",
-                style = MaterialTheme.typography.headlineMedium
+                style = MaterialTheme.typography.headlineMedium,
+                color = Color.White
             )
             Text(
                 text = pet?.breed ?: "",
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color.White
             )
         }
     }

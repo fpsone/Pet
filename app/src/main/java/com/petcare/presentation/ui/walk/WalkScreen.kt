@@ -27,6 +27,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -37,6 +38,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
@@ -45,7 +47,6 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.Polyline
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.petcare.data.remote.RecommendedPlace
-import com.petcare.presentation.ui.common.GlassmorphismCard
 import com.petcare.presentation.ui.common.glassmorphism
 import java.util.concurrent.TimeUnit
 
@@ -73,6 +74,16 @@ fun WalkScreen(viewModel: WalkViewModel = hiltViewModel()) {
             val cameraPositionState = rememberCameraPositionState {
                 state.scentTrail.lastOrNull()?.let {
                     position = CameraPosition.fromLatLngZoom(it, 17f)
+                }
+            }
+
+            LaunchedEffect(state.scentTrail.lastOrNull()) {
+                state.scentTrail.lastOrNull()?.let {
+                    cameraPositionState.animate(
+                        CameraUpdateFactory.newCameraPosition(
+                            CameraPosition(it, 17f, 0f, 0f)
+                        )
+                    )
                 }
             }
 
@@ -112,11 +123,15 @@ fun WalkScreen(viewModel: WalkViewModel = hiltViewModel()) {
 @Composable
 private fun RecommendedPlacesSheet(places: List<RecommendedPlace>) {
     LazyColumn(
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 128.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
-            Text("Discover Nearby Places", style = MaterialTheme.typography.titleLarge)
+            Text(
+                "Discover Nearby Places",
+                style = MaterialTheme.typography.titleLarge,
+                color = Color.White
+            )
         }
         items(places) { place ->
             RecommendedPlaceCard(place = place)
@@ -126,19 +141,24 @@ private fun RecommendedPlacesSheet(places: List<RecommendedPlace>) {
 
 @Composable
 private fun RecommendedPlaceCard(place: RecommendedPlace) {
-    GlassmorphismCard(modifier = Modifier.fillMaxWidth()) {
+    Box(modifier = Modifier
+        .fillMaxWidth()
+        .glassmorphism()) {
         Row(modifier = Modifier.padding(8.dp)) {
             AsyncImage(
                 model = place.imageUrl,
                 contentDescription = place.name,
-                modifier = Modifier.height(80.dp).width(80.dp).glassmorphism(),
+                modifier = Modifier
+                    .height(80.dp)
+                    .width(80.dp)
+                    .glassmorphism(),
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column {
-                Text(place.name, style = MaterialTheme.typography.titleMedium)
-                Text(place.description, style = MaterialTheme.typography.bodySmall)
-                Text("Rating: ${place.rating} ⭐", style = MaterialTheme.typography.bodySmall)
+                Text(place.name, style = MaterialTheme.typography.titleMedium, color = Color.White)
+                Text(place.description, style = MaterialTheme.typography.bodySmall, color = Color.White)
+                Text("Rating: ${place.rating} ⭐", style = MaterialTheme.typography.bodySmall, color = Color.White)
             }
         }
     }
@@ -155,7 +175,7 @@ private fun ActivityPod(duration: Long, distance: Double) {
     }
     val formattedDistance = remember(distance) { String.format("%.2f km", distance) }
 
-    GlassmorphismCard {
+    Box(modifier = Modifier.glassmorphism()) {
         Row(modifier = Modifier.padding(horizontal = 24.dp, vertical = 12.dp)) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text("Time", style = MaterialTheme.typography.labelSmall.copy(color = Color.White))

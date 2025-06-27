@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.petcare.presentation.ui.common.glassmorphism
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun AIDiaryWidget(onAiDiaryClicked: () -> Unit) {
@@ -35,9 +36,17 @@ fun AIDiaryWidget(onAiDiaryClicked: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Icon(imageVector = Icons.Rounded.Book, contentDescription = "AI Diary")
+            Icon(
+                imageVector = Icons.Rounded.Book,
+                contentDescription = "AI Diary",
+                tint = Color.White
+            )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "AI Diary", style = MaterialTheme.typography.titleLarge)
+            Text(
+                text = "AI Diary",
+                style = MaterialTheme.typography.titleLarge,
+                color = Color.White
+            )
         }
     }
 }

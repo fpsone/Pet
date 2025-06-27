@@ -19,14 +19,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.petcare.presentation.ui.common.glassmorphism
+import com.petcare.presentation.ui.common.GlassmorphismCard
 
 @Composable
 fun HealthVitalsWidget(batteryPercentage: Int) {
-    Box(
+    GlassmorphismCard(
         modifier = Modifier
             .aspectRatio(1f)
-            .glassmorphism()
     ) {
         Column(
             modifier = Modifier

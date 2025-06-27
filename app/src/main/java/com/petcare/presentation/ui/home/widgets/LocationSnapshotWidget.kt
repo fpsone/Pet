@@ -19,14 +19,12 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.petcare.presentation.ui.common.glassmorphism
 import com.petcare.presentation.ui.common.GlassmorphismCard
-import androidx.compose.foundation.layout.Box
 
 @Composable
 fun LocationSnapshotWidget(petLocation: LatLng?) {
-    Box(
+    GlassmorphismCard(
         modifier = Modifier
             .aspectRatio(1f)
-            .glassmorphism()
     ) {
         if (petLocation != null) {
             val cameraPositionState = rememberCameraPositionState {

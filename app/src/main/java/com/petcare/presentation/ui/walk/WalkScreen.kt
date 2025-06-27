@@ -47,6 +47,7 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.Polyline
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.petcare.data.remote.RecommendedPlace
+import com.petcare.presentation.ui.common.GlassmorphismCard
 import com.petcare.presentation.ui.common.glassmorphism
 import java.util.concurrent.TimeUnit
 
@@ -59,12 +60,18 @@ fun WalkScreen(viewModel: WalkViewModel = hiltViewModel()) {
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
         sheetContent = {
-            if (state.isLoading) {
-                Box(modifier = Modifier.fillMaxWidth().height(200.dp), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
+            Column(Modifier.padding(bottom = 80.dp)) {
+                if (state.isLoading) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(200.dp), contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator()
+                    }
+                } else {
+                    RecommendedPlacesSheet(places = state.recommendedPlaces)
                 }
-            } else {
-                RecommendedPlacesSheet(places = state.recommendedPlaces)
             }
         },
         sheetPeekHeight = 128.dp,
@@ -141,17 +148,14 @@ private fun RecommendedPlacesSheet(places: List<RecommendedPlace>) {
 
 @Composable
 private fun RecommendedPlaceCard(place: RecommendedPlace) {
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .glassmorphism()) {
+    GlassmorphismCard(modifier = Modifier.fillMaxWidth()) {
         Row(modifier = Modifier.padding(8.dp)) {
             AsyncImage(
                 model = place.imageUrl,
                 contentDescription = place.name,
                 modifier = Modifier
                     .height(80.dp)
-                    .width(80.dp)
-                    .glassmorphism(),
+                    .width(80.dp),
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.width(16.dp))
@@ -175,7 +179,7 @@ private fun ActivityPod(duration: Long, distance: Double) {
     }
     val formattedDistance = remember(distance) { String.format("%.2f km", distance) }
 
-    Box(modifier = Modifier.glassmorphism()) {
+    GlassmorphismCard {
         Row(modifier = Modifier.padding(horizontal = 24.dp, vertical = 12.dp)) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text("Time", style = MaterialTheme.typography.labelSmall.copy(color = Color.White))

@@ -38,7 +38,7 @@ fun Modifier.glassmorphism(
             }
         }
         .background(
-            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
+            color = MaterialTheme.colorScheme.surface,
             shape = shape
         )
         .border(

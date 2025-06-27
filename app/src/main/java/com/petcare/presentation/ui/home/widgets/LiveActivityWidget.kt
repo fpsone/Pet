@@ -7,11 +7,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.petcare.presentation.ui.common.GlassmorphismCard
+import com.petcare.presentation.ui.common.glassmorphism
 
 @Composable
 fun LiveActivityWidget() {
-    GlassmorphismCard(modifier = Modifier.aspectRatio(2f)) {
+    Box(
+        modifier = Modifier
+            .aspectRatio(2f)
+            .glassmorphism()
+    ) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text("Live Activity Chart Placeholder")
         }

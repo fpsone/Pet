@@ -12,11 +12,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.petcare.domain.model.Pet
-import com.petcare.presentation.ui.common.GlassmorphismCard
+import com.petcare.presentation.ui.common.glassmorphism
+import androidx.compose.foundation.layout.Box
 
 @Composable
 fun HeroWidget(pet: Pet?) {
-    GlassmorphismCard(modifier = Modifier.aspectRatio(1f)) {
+    Box(
+        modifier = Modifier
+            .aspectRatio(1f)
+            .glassmorphism()
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()

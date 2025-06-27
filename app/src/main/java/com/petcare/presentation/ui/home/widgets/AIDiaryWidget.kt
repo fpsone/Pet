@@ -17,13 +17,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.petcare.presentation.ui.common.GlassmorphismCard
+import com.petcare.presentation.ui.common.glassmorphism
+import androidx.compose.foundation.layout.Box
 
 @Composable
 fun AIDiaryWidget(onAiDiaryClicked: () -> Unit) {
-    GlassmorphismCard(
+    Box(
         modifier = Modifier
             .aspectRatio(2f)
+            .glassmorphism()
             .clickable { onAiDiaryClicked() }
     ) {
         Row(

@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.petcare.presentation.ui.common.AuroraBackground
-import com.petcare.presentation.ui.common.glassmorphism
+import com.petcare.presentation.ui.common.GlassmorphismCard
 import com.petcare.presentation.ui.home.components.AiDiaryDialog
 import com.petcare.presentation.ui.home.widgets.AIDiaryWidget
 import com.petcare.presentation.ui.home.widgets.HealthVitalsWidget
@@ -63,12 +63,14 @@ fun HomeScreen(
             modifier = Modifier.fillMaxSize(),
             containerColor = Color.Transparent,
             floatingActionButton = {
-                FloatingActionButton(
-                    onClick = { navController.navigate("chat") },
-                    shape = CircleShape,
-                    modifier = Modifier.glassmorphism(shape = CircleShape)
-                ) {
-                    Icon(imageVector = Icons.AutoMirrored.Filled.Chat, contentDescription = "Chat with Pet Pal AI")
+                GlassmorphismCard(shape = CircleShape) {
+                    FloatingActionButton(
+                        onClick = { navController.navigate("chat") },
+                        shape = CircleShape,
+                        containerColor = Color.Transparent
+                    ) {
+                        Icon(imageVector = Icons.AutoMirrored.Filled.Chat, contentDescription = "Chat with Pet Pal AI", tint = Color.White)
+                    }
                 }
             }
         ) { paddingValues ->

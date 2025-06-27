@@ -18,7 +18,7 @@ import androidx.compose.ui.draw.blur
 
 fun Modifier.glassmorphism(
     shape: Shape,
-    blur: Dp,
+    blur: Dp = 10.dp,
 ): Modifier = composed {
     this
         .blur(radius = blur)

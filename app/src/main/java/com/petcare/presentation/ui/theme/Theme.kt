@@ -18,11 +18,11 @@ private val DarkColorScheme = darkColorScheme(
 
 private val LightColorScheme = lightColorScheme(
     primary = Color(0xFF007BFF),
-    background = Color(0xFFF8F8F8),
-    surface = Color(0x1A000000), // Glassmorphism
+    background = Color(0xFF121212),
+    surface = Color(0x1AFFFFFF),
     onPrimary = Color.White,
-    onBackground = Color.Black,
-    onSurface = Color.Black
+    onBackground = Color.White,
+    onSurface = Color.White
 )
 
 @Composable
